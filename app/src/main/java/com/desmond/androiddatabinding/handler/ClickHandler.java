@@ -18,5 +18,10 @@ public class ClickHandler {
 
     public void onClick(View view) {
         Snackbar.make(view, "Item clicked", Snackbar.LENGTH_LONG).show();
+        if (status.getObservableQuotedStatus().get() == null) {
+            status.updateQuotedStatus();
+        } else {
+            status.clearQuotedStatus();
+        }
     }
 }

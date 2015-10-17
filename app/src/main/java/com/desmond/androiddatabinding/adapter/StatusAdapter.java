@@ -2,6 +2,7 @@ package com.desmond.androiddatabinding.adapter;
 
 import com.desmond.androiddatabinding.R;
 import com.desmond.androiddatabinding.databinding.StatusItemBinding;
+import com.desmond.androiddatabinding.handler.ClickHandler;
 import com.desmond.androiddatabinding.model.Status;
 import com.desmond.androiddatabinding.model.StatusMarshaller;
 
@@ -68,6 +69,7 @@ public class StatusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         public void bind(Status status) {
             mStatusItemBinding.setStatus(status);
+            mStatusItemBinding.setHandler(new ClickHandler(status));
         }
     }
 }

@@ -10,12 +10,15 @@ public class Status {
     private String screenName;
     private String text;
     private String imageUrl;
+    private Status quotedStatus;
 
-    public Status(@NonNull String name, @NonNull String screenName, @NonNull String text, @NonNull String imageUrl) {
+    public Status(@NonNull String name, @NonNull String screenName, @NonNull String text,
+                  @NonNull String imageUrl, @NonNull Status quotedStatus) {
         this.name = name;
         this.screenName = screenName;
         this.text = text;
         this.imageUrl = imageUrl;
+        this.quotedStatus = quotedStatus;
     }
 
     public String getName() {
@@ -32,5 +35,9 @@ public class Status {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public boolean hasQuotedStatus() {
+        return quotedStatus != null;
     }
 }

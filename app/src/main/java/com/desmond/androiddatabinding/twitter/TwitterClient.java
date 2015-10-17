@@ -24,7 +24,12 @@ public class TwitterClient extends TwitterAdapter {
 
     public static TwitterClient newInstance(TwitterConsumer streamConsumer) {
         final AsyncTwitter asyncTwitter = AsyncTwitterFactory.getSingleton();
-        asyncTwitter.setOAuthConsumer(BuildConfig.TWITTER_CONSUMER_KEY, BuildConfig.TWITTER_CONSUMER_SECRET);
+
+        try {
+            asyncTwitter.setOAuthConsumer(BuildConfig.TWITTER_CONSUMER_KEY, BuildConfig.TWITTER_CONSUMER_SECRET);
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
 
         final AccessToken accessToken = new AccessToken(BuildConfig.TWITTER_ACCESS_KEY,
                 BuildConfig.TWITTER_ACCESS_SECRET);

@@ -79,7 +79,7 @@ public class StatusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
      * Partial Bind will trigger this
      * @param holder
      * @param position
-     * @param payloads will always be empty from recyclerView v23.1.0. Lower version will require
+     * @param payloads Check out MainActivity.onCreate() comment. Lower version will require
      *                 RecyclerView.getItemAnimator().setSupportsChangeAnimations(false) to
      *                 receive the payload;
      */

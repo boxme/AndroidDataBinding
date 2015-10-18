@@ -29,6 +29,17 @@ public class MainActivity extends AppCompatActivity implements TwitterConsumer {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        /*
+        Uncomment to reuse the ViewHolder regardless of the changes in the bounded area
+        (large changes in bound usually mean the ViewHolder cannot be reused if an animated
+        change is required)
+         */
+//        final RecyclerView.ItemAnimator animator = mRecyclerView.getItemAnimator();
+//        if (animator != null && animator instanceof SimpleItemAnimator) {
+//            ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
+//        }
+
         mStatusAdapter = new StatusAdapter();
         mRecyclerView.setAdapter(mStatusAdapter);
     }

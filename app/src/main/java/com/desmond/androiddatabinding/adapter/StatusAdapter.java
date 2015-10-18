@@ -13,7 +13,6 @@ import android.databinding.ViewDataBinding;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,16 +79,15 @@ public class StatusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
      * Partial Bind will trigger this
      * @param holder
      * @param position
-     * @param payloads
+     * @param payloads will always be empty from recyclerView v23.1.0. Lower version will require
+     *                 RecyclerView.getItemAnimator().setSupportsChangeAnimations(false) to
+     *                 receive the payload;
      */
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<Object> payloads) {
-        final int size = (payloads == null ? 0 : payloads.size());
         if (isForDataBinding(payloads) && holder instanceof StatusViewHolder) {
-            Log.d(TAG, "isForDataBinding " + size + " pos: " + position);
             ((StatusViewHolder) holder).getBinding().executePendingBindings();
         } else {
-            Log.d(TAG, "isForFullBind " + size + " pos: " + position);
             super.onBindViewHolder(holder, position, payloads);
         }
     }
@@ -111,8 +109,6 @@ public class StatusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             public boolean onPreBind(ViewDataBinding binding) {
                 // Return false if the binding is not because of a RecyclerView computation.
                 // False will trigger onCanceled()
-                final boolean isFrmRecyclerViewComputation = mRecyclerView != null && mRecyclerView.isComputingLayout();
-                Log.d(TAG, "isFromRecyclerViewComputation " + isFrmRecyclerViewComputation);
                 return mRecyclerView != null && mRecyclerView.isComputingLayout();
             }
 

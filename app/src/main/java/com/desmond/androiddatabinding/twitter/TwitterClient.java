@@ -17,7 +17,7 @@ import twitter4j.auth.AccessToken;
  * Created by desmond on 17/10/15.
  */
 public class TwitterClient extends TwitterAdapter {
-    private static final int PAGE_SIZE = 50;
+    private static final int PAGE_SIZE = 200;
 
     private final AsyncTwitter mAsyncTwitter;
     private final TwitterConsumer mTwitterConsumer;

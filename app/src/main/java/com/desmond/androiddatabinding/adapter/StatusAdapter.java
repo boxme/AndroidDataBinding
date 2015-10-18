@@ -70,6 +70,9 @@ public class StatusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void bind(Status status) {
             mStatusItemBinding.setStatus(status);
             mStatusItemBinding.setHandler(new ClickHandler(status));
+
+            // This is needed to prevent a second layout pass
+            mStatusItemBinding.executePendingBindings();
         }
     }
 }

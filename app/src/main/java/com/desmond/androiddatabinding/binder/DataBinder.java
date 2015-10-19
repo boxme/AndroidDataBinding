@@ -1,6 +1,7 @@
 package com.desmond.androiddatabinding.binder;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
 import android.content.Context;
 import android.databinding.BindingAdapter;
@@ -15,9 +16,14 @@ public class DataBinder {
 
     }
 
-    @BindingAdapter("imageUrl")
-    public static void setImageUrl(final ImageView imageView, final String url) {
+    @BindingAdapter(value = {"imageUrl", "placeHolder"}, requireAll = false)
+    public static void setImageUrl(final ImageView imageView, final String url, final int placeHolder) {
         final Context context = imageView.getContext();
-        Picasso.with(context).load(url).into(imageView);
+
+        final RequestCreator requestCreator = Picasso.with(context).load(url);
+        if (placeHolder != 0) {
+            requestCreator.placeholder(placeHolder);
+        }
+        requestCreator.into(imageView);
     }
 }

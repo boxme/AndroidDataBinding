@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="com.desmond.androiddatabinding.R" />
         <import type="android.view.View"/>
 
         <variable
@@ -29,7 +30,8 @@
             android:layout_alignParentTop="true"
             android:layout_margin="8dip"
             android:contentDescription="@null"
-            app:imageUrl="@{status.imageUrl}"/>
+            app:imageUrl="@{status.imageUrl}"
+            app:placeHolder="@{R.drawable.user_placeholder_square}"/>
 
         <TextView
             android:id="@+id/status_name"

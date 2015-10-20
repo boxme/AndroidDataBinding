@@ -1,6 +1,7 @@
 package com.desmond.androiddatabinding.adapter;
 
 import com.desmond.androiddatabinding.R;
+import com.desmond.androiddatabinding.binder.MyDataBindingComponent;
 import com.desmond.androiddatabinding.databinding.StatusItemBinding;
 import com.desmond.androiddatabinding.handler.ClickHandler;
 import com.desmond.androiddatabinding.model.Status;
@@ -163,6 +164,11 @@ public class StatusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         private StatusViewHolder(View itemView) {
             super(itemView);
+
+            // Below is different Component for different layout
+//            DataBindingUtil.bind(itemView, MyDataBindingComponent.create());
+
+            DataBindingUtil.setDefaultComponent(MyDataBindingComponent.create());
             mStatusItemBinding = DataBindingUtil.bind(itemView);
         }
 
